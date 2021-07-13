@@ -1,0 +1,24 @@
+# Copyright 2021 Canonical Ltd.
+# See LICENSE file for licensing details.
+name: charm-k8s-etcd
+description: |
+  Deploy a ETCD, etcd is a strongly consistent, distributed key-value store
+  that provides a reliable way to store data that needs to be accessed by a
+  distributed system or cluster of machines. It gracefully handles leader
+  elections during network partitions and can tolerate machine failure,
+  even in the leader node.
+summary: |
+  This charm deploys a ETCD cluster.
+
+containers:
+  etcd:
+    resource: etcd-image
+
+resources:
+  etcd-image:
+    type: oci-image
+    description: OCI image for etcd (quay.io/coreos/etcd)
+
+peers:
+  etcd-cluster:
+    interface: "etcd-cluster"

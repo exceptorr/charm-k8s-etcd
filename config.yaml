@@ -1,0 +1,14 @@
+# Copyright 2021 ubuntu
+# See LICENSE file for licensing details.
+
+options:
+  loglevel:
+    default: info
+    description: |
+      Configures log level. Only supports debug, info, warn, error, panic, or fatal.
+    type: string
+  metrics_url:
+    default: False
+    description: |
+      Configures, if ETCD will be exposing its /metrics endpoint for monitoring purposes.
+    type: boolean

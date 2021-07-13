@@ -1,0 +1,6 @@
+- Clustering & scale-up
+- External communication using ClusterIP
+- Scale-down
+- Lifecycle control actions: backup/restore
+- Implementing quorum precaution: ensuring cluster is running with an odd number of units https://etcd.io/docs/v3.3/faq/#why-an-odd-number-of-cluster-members
+- TLS relation with easyrsa
