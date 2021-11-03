@@ -221,6 +221,7 @@ class CharmEtcd(CharmBase):
 
         pod_cluster_endpoint = "http://{0}:{1}".format(pod_ip, self.__CLUSTER_PORT)
 
+
         env = {
             "ETCD_LOG_LEVEL": logging_level,
             "ETCD_NAME": self.unit.name.replace('/', ''),
@@ -229,11 +230,11 @@ class CharmEtcd(CharmBase):
             "ETCD_LISTEN_PEER_URLS": pod_cluster_endpoint,
             "ETCD_INITIAL_ADVERTISE_PEER_URLS": pod_cluster_endpoint,
             "ETCD_INITIAL_CLUSTER_TOKEN": self._stored.bootstrap_token,
-            "ETCD_INITIAL_CLUSTER_STATE": self._stored.bootstrap_mode
+            "ETCD_INITIAL_CLUSTER_STATE": self._stored.bootstrap_mode,
         }
 
-        if self.model.config['metrics_url']:
-            env['ETCD_LISTEN_METRICS_URL'] = "http://0.0.0.0:{0}".format(self.__CLUSTER_PORT)
+        if self.model.config['metrics'] in ['basic', 'extensive']:
+            env['ETCD_METRICS'] = self.model.config['metrics']
 
         current_pod_only = False
         if self._stored.bootstrap_mode == self.BOOTSTRAP_NEW:

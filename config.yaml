@@ -7,8 +7,8 @@ options:
     description: |
       Configures log level. Only supports debug, info, warn, error, panic, or fatal.
     type: string
-  metrics_url:
-    default: False
+  metrics:
+    default: basic
     description: |
-      Configures, if ETCD will be exposing its /metrics endpoint for monitoring purposes.
-    type: boolean
+      Set level of detail for exported metrics, specify ‘extensive’ to include server side grpc histogram metrics.
+    type: string
